@@ -77,6 +77,11 @@ app.get('/todos', (req, res) => {
     }
 })
 
+app.get('/logout', (req, res) => {
+    req.logOut((err)=>err ? console.log(err) : null)
+    res.redirect('/')
+})
+
 app.listen(8000, () => {
     console.log('Server running on port 8000')
 })
