@@ -58,7 +58,11 @@ passport.use(new GoogleStrategy({
 
 
 app.get('/', (req, res) => {
-    res.render('enter')
+    if (req.isAuthenticated()) {
+        res.redirect('/todos')
+    } else {
+        res.render('enter')
+    }
 })
 
 app.get('/auth/google', passport.authenticate('google', { scope: ["profile"] }))
@@ -66,7 +70,11 @@ app.get('/auth/google', passport.authenticate('google', { scope: ["profile"] }))
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/', successRedirect: '/todos' }))
 
 app.get('/todos', (req, res) => {
-    res.render('todos', {user: req.user})
+    if (req.isAuthenticated()) {
+        res.render('todos', {user: req.user})
+    } else {
+        res.redirect('/')
+    }
 })
 
 app.listen(8000, () => {
