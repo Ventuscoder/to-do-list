@@ -43,10 +43,7 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: 'http://localhost:8000/auth/google/callback'
 }, async (accessToken, refreshToken, profile, cb) => {
-    console.log(profile)
-
     const foundUser = await Users.find({ googleID: profile.id })
-    console.log(foundUser)
     if (foundUser.length == 0) {
         const newUser = new Users({fullName: profile.displayName,googleID: profile.id})
         await newUser.save()
@@ -71,7 +68,10 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
 
 app.get('/todos', (req, res) => {
     if (req.isAuthenticated()) {
-        res.render('todos', {user: req.user})
+        const dataToSend = {}
+        dataToSend.title = req.user.fullName + "'s todo list"
+        dataToSend.todosEmpty = req.user.todos.length == 0
+        res.render('todos', {data: dataToSend})
     } else {
         res.redirect('/')
     }

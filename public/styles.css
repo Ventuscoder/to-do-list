@@ -12,6 +12,11 @@ a {
     text-decoration: none;
 }
 
+h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
 /* Login or Register form */
 
 .enter-div {
@@ -44,11 +49,6 @@ a {
     border: 1px solid white;
 }
 
-.enter-div h2 {
-    margin-top: 10px;
-    margin-bottom: 0;
-    text-align: center;
-}
 
 .enter-div button a {
     color: white;
@@ -90,6 +90,34 @@ a {
 
 .logout a {
     color: black;
+}
+
+.new-todo-form {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.new-todo-field {
+    width: 240px;
+    height: 60px;
+    font-size: 1.5rem;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: black;
+    border: none none 1px solid white none;
+}
+
+.new-todo-field:focus {
+    outline: none;
+}
+.new-todo-form button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-left: 20px;
 }
 
 /* Styling footer section */

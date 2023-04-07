@@ -1,7 +1,13 @@
 <%- include('header') -%>
 
 <div class="todos-div">
-    <p style="color:white;"><%= user %></p> 
+    <h2><%= data.title %></h2>
+    <div class="new-todo-form">
+        <form action="/new-todo" method="post">
+            <input type="text" class="new-todo-field" placeholder="Create todo">
+            <button type="submit">+</button>
+        </form>
+    </div>
 </div>
 <div class="logout-section">
     <button class="logout"><a href="/logout">Logout</a></button>
