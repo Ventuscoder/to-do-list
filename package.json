@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "A todo list application made using NodeJS using Google OAuth authentication",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ventuscoder/to-do-list.git"
+  },
+  "author": "Shivank Mitra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ventuscoder/to-do-list/issues"
+  },
+  "homepage": "https://github.com/Ventuscoder/to-do-list#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}

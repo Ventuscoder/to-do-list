@@ -1,0 +1,65 @@
+/* Universal styles */
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Login or Register form */
+
+.enter-div {
+    padding: 10px 10px;
+    width: 20vw;
+    height: 40vh;
+    margin: 20vh auto;
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.icon-div {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 40px auto 10px;
+}
+
+.enter-div button {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 25px auto;
+    background-color: blue;
+    border-radius: 6px;
+    border: 1px solid white;
+}
+
+.enter-div button a {
+    color: white;
+}
+
+.enter-div p {
+    font-size: 1rem;
+    margin-top: 50px;
+}
+
+/* Styling footer section */
+
+.footer {
+    width: 100%;
+    text-align: center;
+}
+
+.footer a {
+    color: white;
+}
