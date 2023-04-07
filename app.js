@@ -45,7 +45,7 @@ passport.use(new GoogleStrategy({
 }, async (accessToken, refreshToken, profile, cb) => {
     const foundUser = await Users.find({ googleID: profile.id })
     if (foundUser.length == 0) {
-        const newUser = new Users({fullName: profile.displayName,googleID: profile.id})
+        const newUser = new Users({fullName: profile.displayName, googleID: profile.id, todos: ["Example Todo", "Another Todo"]})
         await newUser.save()
         cb(null, newUser)
     } else {
@@ -70,7 +70,7 @@ app.get('/todos', (req, res) => {
     if (req.isAuthenticated()) {
         const dataToSend = {}
         dataToSend.title = req.user.fullName + "'s todo list"
-        dataToSend.todosEmpty = req.user.todos.length == 0
+        dataToSend.todos = req.user.todos
         res.render('todos', {data: dataToSend})
     } else {
         res.redirect('/')
