@@ -38,7 +38,7 @@ a {
     padding: 10px;
     width: 100%;
     font-size: 1.2rem;
-    margin: 25px auto;
+    margin: 25px auto 0;
     background-color: blue;
     border-radius: 6px;
     border: 1px solid white;
@@ -50,7 +50,6 @@ a {
 
 .enter-div p {
     font-size: 1rem;
-    margin-top: 50px;
 }
 
 /* Styling footer section */
