@@ -3,8 +3,8 @@ const express = require('express')
 const app = express()
 const ejs = require('ejs')
 const session = require('express-session')
+const _ = require('lodash')
 const mongoose = require('mongoose')
-const findOrCreate = require('mongoose-find-or-create')
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 
@@ -15,8 +15,6 @@ const userSchema = mongoose.Schema({
     googleID: String,
     todos: [{type: String}]
 })
-
-userSchema.plugin(findOrCreate)
 
 const Users = mongoose.model('User', userSchema)
 
@@ -87,6 +85,30 @@ app.post('/new-todo', async (req, res) => {
     let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
     req.user = updatedUser
     res.redirect('/todos')
+})
+
+app.get('/complete/:index', async (req, res) => {
+    if (!req.isAuthenticated()) {
+        res.redirect('/')
+        return
+    }
+    const newData = req.user
+    _.pullAt(newData.todos, [Number(req.params.index)])
+    let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
+    req.user = updatedUser
+    res.redirect('/')
+})
+
+app.get('/delete/:index', async (req, res) => {
+    if (!req.isAuthenticated()) {
+        res.redirect('/')
+        return
+    }
+    const newData = req.user
+    _.pullAt(newData.todos, [Number(req.params.index)])
+    let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
+    req.user = updatedUser
+    res.redirect('/')
 })
 
 app.get('/logout', (req, res) => {

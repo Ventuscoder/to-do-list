@@ -121,7 +121,29 @@ h2 {
     cursor: pointer;
 }
 
+.table-container {
+    height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 10px;
+}
+
 table {
+    position: sticky;
+    top: 0;
     width: 90%;
     margin: 0 auto;
 }
