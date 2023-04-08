@@ -1,0 +1,16 @@
+<%- include('header') -%>
+
+<div class="todos-div">
+    <div class="new-todo-form">
+        <form action="/edit/<%= todo.index %>" method="post">
+            <input type="text" class="new-todo-field" placeholder="Edit todo" name="todo" value="<%= todo.name %>">
+            <button type="submit" id="save-btn">Save</button>
+            <button id="cancel-btn"><a href="/todos">Cancel</a></button>
+        </form>
+    </div>
+</div>
+<div class="logout-section">
+    <button class="logout"><a href="/logout">Logout</a></button>
+</div>
+
+<%- include('footer') -%>

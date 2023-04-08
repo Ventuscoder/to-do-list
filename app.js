@@ -87,6 +87,28 @@ app.post('/new-todo', async (req, res) => {
     res.redirect('/todos')
 })
 
+app.route('/edit/:index')
+.get((req, res) => {
+    if (req.isAuthenticated()) {
+        const existingUser = req.user
+        const arrIndex = Number(req.params.index)
+        res.render('edit', {todo: {name: existingUser.todos[arrIndex], index: arrIndex}})
+    } else {
+        res.redirect('/')
+    }
+}).post(async (req, res) => {
+    if (req.isAuthenticated()) {
+        const newData = req.user
+        const arrIndex = Number(req.params.index)
+        newData.todos[arrIndex] = req.body.todo
+        const updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
+        req.user = updatedUser
+        res.redirect('/todos')
+    } else {
+        res.redirect('/')
+    }
+})
+
 app.get('/complete/:index', async (req, res) => {
     if (!req.isAuthenticated()) {
         res.redirect('/')
@@ -96,7 +118,7 @@ app.get('/complete/:index', async (req, res) => {
     _.pullAt(newData.todos, [Number(req.params.index)])
     let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
     req.user = updatedUser
-    res.redirect('/')
+    res.redirect('/todos')
 })
 
 app.get('/delete/:index', async (req, res) => {
@@ -108,7 +130,7 @@ app.get('/delete/:index', async (req, res) => {
     _.pullAt(newData.todos, [Number(req.params.index)])
     let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
     req.user = updatedUser
-    res.redirect('/')
+    res.redirect('/todos')
 })
 
 app.get('/logout', (req, res) => {

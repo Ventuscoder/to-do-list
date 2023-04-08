@@ -14,7 +14,7 @@
             <table>
                 <% for (let i = 0; i < data.todos.length; i++) { %>
                     <tr>
-                        <td class="edit"><i class="fa-solid fa-pen"></i></td>
+                        <td class="edit"><a href="/edit/<%= i %>"><i class="fa-solid fa-pen"></i></a></td>
                         <td class="todo-name"><%= data.todos[i] %></td>
                         <td class="complete"><a href="/complete/<%= i %>"><i class="fa-solid fa-check"></i></a></td>
                         <td class="delete"><a href="/delete/<%= i %>"><i class="fa-solid fa-trash-can"></i></a></td>

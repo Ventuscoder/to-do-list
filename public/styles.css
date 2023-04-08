@@ -108,6 +108,7 @@ h2 {
     margin-bottom: 20px;
     color: white;
     background-color: black;
+    border-radius: 10px;
     border: none none 1px solid white none;
 }
 
@@ -165,11 +166,46 @@ td {
     overflow-y: auto;
 }
 
+.edit a {
+    color: orange;
+}
+
 .complete a {
     color: green;
 }
 
 .delete a {
+    color: red;
+}
+
+/* Style edit page */
+
+#save-btn, #cancel-btn {
+    display: block;
+    border-radius: 10px;
+    margin: 0 auto 20px;
+    height: 40px;
+}
+
+#save-btn {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+    width: 70px;
+}
+
+#save-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+#cancel-btn {
+    border: 2px solid red;
+    background-color: black;
+    width: 100px;
+}
+
+#cancel-btn a {
     color: red;
 }
 
