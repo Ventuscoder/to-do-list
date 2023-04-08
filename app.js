@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser((user, done)=>done(null, user))
 passport.deserializeUser(async(user, done)=>{
-    const foundUser = await Users.find(user)
+    const foundUser = await Users.find({_id: user._id})
     done(null, foundUser[0])
 })
 
@@ -75,6 +75,18 @@ app.get('/todos', (req, res) => {
     } else {
         res.redirect('/')
     }
+})
+
+app.post('/new-todo', async (req, res) => {
+    if (!req.isAuthenticated()) {
+        res.redirect('/')
+        return
+    }
+    const newData = req.user
+    newData.todos.push(req.body.todo)
+    let updatedUser = await Users.findOneAndUpdate({_id: newData._id}, newData)
+    req.user = updatedUser
+    res.redirect('/todos')
 })
 
 app.get('/logout', (req, res) => {
